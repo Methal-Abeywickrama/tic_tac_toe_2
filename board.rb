@@ -28,24 +28,29 @@ class Board
     input
   end
 
-  def check_win(mark)
+  def squares_available?
+    @squares.any? { |val| val.value.instance_of?(Integer)}
+
+  end
+
+  def check_win?(mark)
+
     won = false
-    case mark
-    when (@squares[0] == @squares[1]) == @squares[2]
+    if [@squares[0].value, @squares[1].value, @squares[2].value].all? { |val| val == (@squares[0].value)}
       won = true
-    when (@squares[3] == @squares[4]) == @squares[5]
+    elsif [@squares[3].value, @squares[4].value, @squares[5].value].all? { |val| val == (@squares[3].value)}
       won = true
-    when (@squares[6] == @squares[7]) == @squares[8]
+    elsif [@squares[6].value, @squares[7].value, @squares[8].value].all? { |val| val == (@squares[6].value)}
       won = true
-    when (@squares[0] == @squares[3]) == @squares[6]
+    elsif [@squares[0].value, @squares[3].value, @squares[6].value].all? { |val| val == (@squares[0].value)}
       won = true
-    when (@squares[1] == @squares[4]) == @squares[5]
+    elsif [@squares[1].value, @squares[4].value, @squares[7].value].all? { |val| val == (@squares[1].value)}
       won = true
-    when (@squares[2] == @squares[5]) == @squares[8]
+    elsif [@squares[2].value, @squares[5].value, @squares[8].value].all? { |val| val == (@squares[2].value)}
       won = true
-    when (@squares[0] == @squares[4]) == @squares[8]
+    elsif [@squares[0].value, @squares[4].value, @squares[8].value].all? { |val| val == (@squares[0].value)}
       won = true
-    when (@squares[2] == @squares[4]) == @squares[6]
+    elsif [@squares[2].value, @squares[4].value, @squares[6].value].all? { |val| val == (@squares[2].value)}
       won = true
     end
     won
